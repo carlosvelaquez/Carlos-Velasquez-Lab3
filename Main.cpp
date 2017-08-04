@@ -180,7 +180,7 @@ int main(){
 			cout << nombreJugador1 << "tiene " << barcosRestantes1 
 				<< "barcos restantes." << endl;
 //
-		}
+	}
 	}
 
 	return 0;

@@ -179,8 +179,8 @@ int main(){
 			//barcosRestantes1 = verificarBarcosRestantes(posicionesAtacadas1, tablero1);
 			cout << nombreJugador1 << "tiene " << barcosRestantes1 
 				<< "barcos restantes." << endl;
-//
-	}
+			//
+		}
 	}
 
 	return 0;

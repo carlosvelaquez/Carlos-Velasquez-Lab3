@@ -39,7 +39,13 @@ int main(){
 
 	while(!termino){
 		if(turno == 1){
-			atacar(nombreJugador1, tableroJuego1, posicionesBarcos2);
+			bool hit = atacar(nombreJugador1, tableroJuego1, posicionesBarcos2);
+			if(hit){
+				cout << nombreJugador2 <<  << endl;	
+			}else{
+
+			}
+
 			barcosRestantes2 = verificarBarcosRestantes(2, posicionesBarcos2):
 		}else{
 			atacar(nombreJugador2, tableroJuego2, posicionesBarcos1);
@@ -57,6 +63,37 @@ int main(){
 
 }
 
-void atacar(){
+bool atacar(string nombreJugador, char** tablero, int** posicionesBarcos, int** posicionesAtacadas){
+	int x, y;
 
+	cout << "Es el turno de " << nombreJugador << "!" << endl 
+		<< "------------------------------" << endl;
+	imprimirTablero(tablero);
+	cout << endl << "Ingrese las coordenadas a atacar" << endl;
+	cout << "X: ";
+
+	cin >> x;
+
+	cout << "Y: ";
+	cin >> y;
+
+	bool hit = false;
+
+	for(int i = 0; i < 8; i++){
+		if(posicionesBarcos[i][0] == x && posicionesBarcos[i][1] == y){
+			for(int j = 0; j < 65; j++){
+				if(posicionesAtacadas[j][0] == x && posicionesAtacadas[j][1] == y){
+					cout << nombreJugador << "ha disparado de nuevo en (" << x
+						<< "," << y << ")!" << endl;
+				}else{
+					cout << nombreJugador << "ha disparado en (" << x
+						<< "," << y << ") y le ha atinado a un barco enemigo!"
+						<< endl;
+					hit = true;
+				}
+			}
+		}
+	}
+
+	return hit;
 }

@@ -31,7 +31,7 @@ int main(){
 	char** tableroJuego2;
 	tableroJuego1 = generarTablero();
 	tableroJuego2 = generarTablero();
-		
+
 	//Booleans para ver si el juego termino y determinar el jugador ganador
 	bool termino = false;
 	bool gano1 = false;
@@ -42,13 +42,6 @@ int main(){
 
 	int shotsTomados1 = 0;
 	int shotsTomados2 = 0;
-
-	int codigoNombre1;
-	int codigoNombre2;
-
-	string nombreJugador1 = generarNombre(codigoNombre1);
-	string nombreJugador2 = generarNombre(codigoNombre2);
-
 	int turno = 1;
 
 	bienvenida(nombreJugador1, nombreJugador2, posicionesBarcos1, posicionesBarcos2);
@@ -61,7 +54,7 @@ int main(){
 
 			bool hit = atacar(nombreJugador1, tableroJuego1, posicionesBarcos2);
 			if(hit){
-				cout << nombreJugador2 << "bebe un shot!" << endl;
+				cout << nombreJugador2 << " bebe un shot de "<< seleccionarBebida() << endl;
 				shotsTomados2 ++;
 			}else{
 				cout << nombreJugador2 << "está a salvo." << endl;
@@ -191,6 +184,9 @@ void bienvenida(string nombreJugador1, string nombreJugador2, int*** posicionesB
 	cout << "Jugador 1, voltea la computadora y presiona ENTER" << endl;
 	string a;
 	cin >> a;
+	cout << "Ingresa tu nombre: ";
+	cin >> nombreJugador1;
+	cout << "Bienvenido(a), " << nombreJugador1 << ", este es tu tablero: " << endl;
 	mostrarTablero(posicionesBarcos1);
 	cout << "Presiona ENTER para borrar esta pantalla y continuar" << endl;
 	cin >> a;
@@ -198,8 +194,184 @@ void bienvenida(string nombreJugador1, string nombreJugador2, int*** posicionesB
 	cout << "Jugador 2, voltea la computadora y presiona ENTER" << endl;
 	string a;
 	cin >> a;
+	cout << "Ingresa tu nombre: ";
+	cin >> nombreJugador2;
+	cout << "Bienvenido(a), " << nombreJugador2 << ", este es tu tablero: " << endl;
 	mostrarTablero(posicionesBarcos2);
 	cout << "Presiona ENTER para borrar esta pantalla y continuar" << endl;
 	cin >> a;
-	
+
+}
+
+string seleccionarBebida(){
+	int codigoBebida;
+
+	switch(codigoBebida){
+		case 1:
+			return "Cheap_tequila";
+		case 2:
+			return "Jell-O";
+		case 3:
+			return "Kamikaze";
+		case 4:
+			return "MindEraser";
+		case 5:
+			return "Bombs";
+		case 6:
+			return "Fireballs";
+		case 7:
+			return "Whiskey";
+		default:
+			return "";
+	}
+
+}
+
+
+int*** posicionarBarcos(int jugador){
+	int*** tablero = new int[4][3][3];
+
+	if(jugador == 1){
+		tablero[0][0][0] = 1;
+		tablero[0][0][1] = 1;
+
+		tablero[0][1][0] = 1;
+		tablero[0][1][1] = 2;
+
+		tablero[0][2][0] = 1;
+		tablero[0][2][1] = 3;
+
+
+		tablero[1][0][0] = 2;
+		tablero[1][0][1] = 7;
+
+		tablero[1][1][0] = 3;
+		tablero[1][1][1] = 7;
+
+		tablero[1][2][0] = 4;
+		tablero[1][2][1] = 7;
+
+
+		tablero[2][0][0] = 3;
+		tablero[2][0][1] = 4;
+
+		tablero[2][1][0] = 4;
+		tablero[2][1][1] = 4;
+
+		tablero[2][2][0] = 5;
+		tablero[2][2][1] = 4;
+
+
+		tablero[3][0][0] = 7;
+		tablero[3][0][1] = 1;
+
+		tablero[3][1][0] = 7;
+		tablero[3][1][1] = 2;
+
+		tablero[3][2][0] = 7;
+		tablero[3][2][1] = 3;
+	}else{
+		tablero[0][0][0] = 0;
+		tablero[0][0][1] = 1;
+
+		tablero[0][1][0] = 0;
+		tablero[0][1][1] = 2;
+
+		tablero[0][2][0] = 0;
+		tablero[0][2][1] = 3;
+
+
+		tablero[1][0][0] = 3;
+		tablero[1][0][1] = 5;
+
+		tablero[1][1][0] = 3;
+		tablero[1][1][1] = 6;
+
+		tablero[1][2][0] = 3;
+		tablero[1][2][1] = 7;
+
+
+		tablero[2][0][0] = 4;
+		tablero[2][0][1] = 4;
+
+		tablero[2][1][0] = 5;
+		tablero[2][1][1] = 4;
+
+		tablero[2][2][0] = 6;
+		tablero[2][2][1] = 4;
+
+
+		tablero[3][0][0] = 5;
+		tablero[3][0][1] = 1;
+
+		tablero[3][1][0] = 6;
+		tablero[3][1][1] = 1;
+
+		tablero[3][2][0] = 7;
+		tablero[3][2][1] = 1;
+	}
+
+	return tablero;
+}
+tablero[0][0][0] = 1;
+		tablero[0][0][1] = 1;
+
+		tablero[0][1][0] = 1;
+		tablero[0][1][1] = 2;
+
+		tablero[0][2][0] = 1;
+		tablero[0][2][1] = 3;
+
+
+		tablero[1][0][0] = 2;
+		tablero[1][0][1] = 7;
+
+		tablero[1][1][0] = 3;
+		tablero[1][1][1] = 7;
+
+		tablero[1][2][0] = 4;
+		tablero[1][2][1] = 7;
+
+
+		tablero[2][0][0] = 3;
+		tablero[2][0][1] = 4;
+
+		tablero[2][1][0] = 4;
+		tablero[2][1][1] = 4;
+
+		tablero[2][2][0] = 5;
+		tablero[2][2][1] = 4;
+
+
+		tablero[3][0][0] = 7;
+		tablero[3][0][1] = 1;
+
+		tablero[3][1][0] = 7;
+		tablero[3][1][1] = 2;
+
+		tablero[3][2][0] = 7;
+		tablero[3][2][1] = 3;
+
+int** llenarMatrizPA(){
+	int** matriz = new matriz[65][2];
+
+	for(int i = 0; i < 65; i++){
+		for(int j = 0; j < 2; j++){
+			matriz[i][j] = -1;
+		}
+	}
+
+	return matriz;
+}
+
+char** generarTablero(){
+	char** tablero = new char[8][8];
+
+	for(int i = 0; i < 8; i++){
+		for(int j = 0; j < 8; j++){
+			tablero[i][j] = ' ';
+		}
+	}
+
+	return tablero;
 }

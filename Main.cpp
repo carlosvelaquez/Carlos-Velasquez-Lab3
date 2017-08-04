@@ -183,12 +183,6 @@ int main(){
 		}
 	}
 
-	/*if(gano1){
-	  terminarJuego(1);
-	  }else{
-	  terminarJuego(2);
-	  }*/
-
 	return 0;
 
 }

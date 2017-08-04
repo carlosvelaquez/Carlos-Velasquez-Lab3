@@ -7,24 +7,31 @@ void imprimirTablero();
 void atacar(string, char**, int***, int**);
 string generarNombre(int);
 void bienvenida(string, string, int***, int***);
+int*** posicionesBarcos(int);
+int** llenarMatrizPA();
+char** generarTablero();
 
 int main(){
 
 	//Arreglos con las posiciones de los barcos
 	int*** posicionesBarcos1;
 	int*** posicionesBarcos2;
+	posicionesBarcos1 = posicionarBarcos(1);
+	posicionesBarcos2 = posicionarBarcos(2);
+
 	//Arreglos con las posiciones que han sido atacadas
 	int** posicionesAtacadas1;
 	int** posicionesAtacadas2;
+	posicionesAtacadas1 = llenarMatrizPA();
+	posicionesAtacadas2 = llenarMatrizPA();
+
 
 	//Tableros que se usaran para marcar las posiciones atacadas
 	char** tableroJuego1;
 	char** tableroJuego2;
-
-	//Generar todos los tableros
-	generarTablero(tableroJuego1);
-	generarTablero(tableroJuego2);
-
+	tableroJuego1 = generarTablero();
+	tableroJuego2 = generarTablero();
+		
 	//Booleans para ver si el juego termino y determinar el jugador ganador
 	bool termino = false;
 	bool gano1 = false;
@@ -181,4 +188,18 @@ void bienvenida(string nombreJugador1, string nombreJugador2, int*** posicionesB
 		<< endl << "aleatoria por el sistema. Hay 7 posibilidades de shots en total." << endl << endl;
 
 
+	cout << "Jugador 1, voltea la computadora y presiona ENTER" << endl;
+	string a;
+	cin >> a;
+	mostrarTablero(posicionesBarcos1);
+	cout << "Presiona ENTER para borrar esta pantalla y continuar" << endl;
+	cin >> a;
+
+	cout << "Jugador 2, voltea la computadora y presiona ENTER" << endl;
+	string a;
+	cin >> a;
+	mostrarTablero(posicionesBarcos2);
+	cout << "Presiona ENTER para borrar esta pantalla y continuar" << endl;
+	cin >> a;
+	
 }
